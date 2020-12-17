@@ -1,0 +1,13 @@
+#!/usr/bin/env rc
+
+flag e +
+
+instances=`{cat instances.txt}
+
+fn FetchOne {
+	url=$1
+	wget -S $url -O /dev/null
+}
+
+for (url in $instances)
+	FetchOne $url
