@@ -1,13 +1,9 @@
-#!/usr/bin/env rc
+#!/usr/bin/env pil
 
-flag e +
+(setq Instances (rc "config.rc" 'Instances))
 
-instances=`{cat instances.txt}
+(de TestInstance (Instance) (prinl "should test instance " Instance))
 
-fn FetchOne {
-	url=$1
-	wget -S $url -O /dev/null
-}
+(mapcar TestInstance Instances)
 
-for (url in $instances)
-	FetchOne $url
+(bye)
